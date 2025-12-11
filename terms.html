@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Términos y Condiciones - Café Express</title>
+  
+  <!-- Bulma CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary-brown: #6B4423;
+      --secondary-brown: #8B6F47;
+      --accent-gold: #D4AF37;
+      --cream: #F5E6D3;
+      --dark: #2C1810;
+    }
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: #4c4b4b;
+    }
+    
+    .title, .navbar-item strong {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    .navbar {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--primary-brown) 100%);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    
+    .navbar-item, .navbar-link {
+      color: var(--cream) !important;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    
+    .navbar-item:hover {
+      background-color: rgba(212, 175, 55, 0.2) !important;
+      color: var(--accent-gold) !important;
+    }
+    
+    .navbar-burger span {
+      background-color: var(--cream);
+    }
+    
+    .hero.is-primary {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--primary-brown) 100%);
+    }
+    
+    .hero .title {
+      color: #FFF8E7;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    
+    .hero .subtitle {
+      color: var(--cream);
+    }
+    
+    .content h2 {
+      color: var(--primary-brown);
+      font-family: 'Playfair Display', serif;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+      border-bottom: 2px solid var(--accent-gold);
+      padding-bottom: 0.5rem;
+    }
+    
+    .content h3 {
+      color: var(--secondary-brown);
+      font-weight: 600;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .box {
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      border-left: 4px solid var(--accent-gold);
+    }
+    
+    .button.is-primary {
+      background: linear-gradient(135deg, var(--accent-gold) 0%, #C19A2E 100%);
+      border: none;
+      font-weight: 600;
+    }
+    
+    .footer {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--primary-brown) 100%);
+      margin-top: 4rem;
+    }
+    
+    .has-text-primary-custom {
+      color: var(--primary-brown) !important;
+    }
+    
+    ul {
+      margin-left: 1.5rem;
+      margin-top: 0.5rem;
+    }
+    
+    ul li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .last-update {
+      background-color: var(--cream);
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      text-align: center;
+      font-weight: 600;
+      color: var(--primary-brown);
+    }
+
+    .warning-box {
+      background: linear-gradient(135deg, #fff3cd 0%, #fff8e1 100%);
+      border-left: 5px solid #ffc107;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- BARRA DE NAVEGACIÓN -->
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="index.html">
+        <i class="fas fa-coffee has-text-accent"></i>
+        <strong class="ml-2">Café Express</strong>
+      </a>
+      
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="index.html">
+          <i class="fas fa-home mr-2"></i>
+          Volver al Inicio
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero is-primary is-medium">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title is-1">
+          <i class="fas fa-file-contract mr-3"></i>
+          Términos y Condiciones
+        </h1>
+        <h2 class="subtitle is-4">
+          Café Express - Normas de uso y servicio
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-10">
+          
+          <div class="last-update">
+            <i class="fas fa-calendar-alt mr-2"></i>
+            Última actualización: Diciembre 2025
+          </div>
+
+          <div class="content">
+            <div class="box">
+              <p class="is-size-5">
+                Bienvenido a <strong>Café Express</strong>. Al acceder y utilizar nuestros servicios, aceptas cumplir con estos términos y condiciones. Por favor, léelos cuidadosamente.
+              </p>
+            </div>
+
+            <h2><i class="fas fa-handshake mr-2"></i>1. Aceptación de Términos</h2>
+            <p>Al acceder a este sitio web, realizar pedidos online, hacer reservaciones o utilizar cualquiera de nuestros servicios, aceptas estar legalmente obligado por estos términos y condiciones, todas las leyes y regulaciones aplicables.</p>
+            
+            <div class="warning-box">
+              <p class="has-text-weight-semibold">
+                <i class="fas fa-exclamation-triangle mr-2"></i>
+                Si no estás de acuerdo con alguno de estos términos, no debes utilizar nuestros servicios.
+              </p>
+            </div>
+
+            <h2><i class="fas fa-store mr-2"></i>2. Uso del Servicio</h2>
+            
+            <h3>2.1 Elegibilidad</h3>
+            <ul>
+              <li>Debes ser mayor de 18 años para realizar pedidos online</li>
+              <li>Los menores pueden consumir en nuestras instalaciones con supervisión de un adulto</li>
+              <li>Debes proporcionar información veraz y actualizada al registrarte</li>
+            </ul>
+
+            <h3>2.2 Cuenta de Usuario</h3>
+            <ul>
+              <li>Eres responsable de mantener la confidencialidad de tu cuenta</li>
+              <li>No debes compartir tu contraseña con terceros</li>
+              <li>Debes notificarnos inmediatamente sobre cualquier uso no autorizado</li>
+              <li>Nos reservamos el derecho de suspender cuentas que violen estos términos</li>
+            </ul>
+
+            <h2><i class="fas fa-shopping-cart mr-2"></i>3. Pedidos Online</h2>
+            
+            <h3>3.1 Proceso de Pedido</h3>
+            <ul>
+              <li>Todos los pedidos están sujetos a disponibilidad de productos</li>
+              <li>Nos reservamos el derecho de rechazar o cancelar pedidos por razones justificadas</li>
+              <li>Recibirás una confirmación por email una vez procesado tu pedido</li>
+              <li>Los tiempos de preparación son estimados y pueden variar</li>
+            </ul>
+
+            <h3>3.2 Precios y Pagos</h3>
+            <ul>
+              <li>Todos los precios están en pesos mexicanos (MXN) e incluyen IVA</li>
+              <li>Los precios pueden cambiar sin previo aviso</li>
+              <li>El precio aplicable será el vigente al momento de realizar el pedido</li>
+              <li>Aceptamos efectivo, tarjetas de crédito/débito y transferencias bancarias</li>
+              <li>El pago debe realizarse antes de la entrega del pedido</li>
+            </ul>
+
+            <h3>3.3 Entregas a Domicilio</h3>
+            <ul>
+              <li>Realizamos entregas en un radio de 5 km de nuestra ubicación</li>
+              <li>El tiempo de entrega estimado es de 30-45 minutos</li>
+              <li>Se puede aplicar un cargo adicional por entrega según la distancia</li>
+              <li>Debes estar disponible en la dirección proporcionada</li>
+              <li>No nos hacemos responsables por direcciones incorrectas o incompletas</li>
+            </ul>
+
+            <h2><i class="fas fa-calendar-check mr-2"></i>4. Reservaciones</h2>
+            
+            <h3>4.1 Política de Reservaciones</h3>
+            <ul>
+              <li>Las reservaciones deben hacerse con al menos 2 horas de anticipación</li>
+              <li>Mantendremos tu mesa reservada por 15 minutos después de la hora acordada</li>
+              <li>Para grupos de más de 8 personas, se requiere confirmación telefónica</li>
+              <li>Nos reservamos el derecho de reorganizar mesas según disponibilidad</li>
+            </ul>
+
+            <h3>4.2 Cancelaciones</h3>
+            <ul>
+              <li>Puedes cancelar tu reservación sin cargo hasta 2 horas antes</li>
+              <li>Cancelaciones tardías pueden resultar en restricciones futuras</li>
+              <li>En caso de no presentarte sin avisar, podemos limitar futuras reservaciones</li>
+            </ul>
+
+            <h2><i class="fas fa-undo mr-2"></i>5. Política de Devoluciones y Reembolsos</h2>
+            
+            <h3>5.1 Productos con Defecto</h3>
+            <ul>
+              <li>Si tu producto llega defectuoso o en mal estado, contáctanos de inmediato</li>
+              <li>Reemplazaremos el producto o emitiremos un reembolso completo</li>
+              <li>Debes notificarnos dentro de las primeras 2 horas de recibir el pedido</li>
+            </ul>
+
+            <h3>5.2 Cancelación de Pedidos</h3>
+            <ul>
+              <li>Puedes cancelar tu pedido online antes de que sea preparado</li>
+              <li>Una vez iniciada la preparación, no se aceptan cancelaciones</li>
+              <li>Los reembolsos se procesarán en 5-7 días hábiles</li>
+            </ul>
+
+            <h3>5.3 Excepciones</h3>
+            <p>No se aceptan devoluciones o reembolsos por:</p>
+            <ul>
+              <li>Cambio de opinión después de recibir el pedido</li>
+              <li>Pedidos personalizados según tus especificaciones</li>
+              <li>Productos consumidos en su totalidad</li>
+              <li>Alergias no informadas al momento del pedido</li>
+            </ul>
+
+            <h2><i class="fas fa-allergies mr-2"></i>6. Información de Alérgenos</h2>
+            <p>Nuestros productos pueden contener o haber estado en contacto con:</p>
+            <ul>
+              <li>Leche y derivados lácteos</li>
+              <li>Gluten (trigo, avena, cebada)</li>
+              <li>Frutos secos (nueces, almendras, avellanas)</li>
+              <li>Huevo</li>
+              <li>Soya</li>
+            </ul>
+
+            <div class="box has-background-danger-light">
+              <p class="has-text-weight-semibold">
+                <i class="fas fa-exclamation-circle mr-2"></i>
+                Si tienes alguna alergia alimentaria, DEBES informarnos antes de realizar tu pedido. No nos hacemos responsables por reacciones alérgicas si no fuimos notificados.
+              </p>
+            </div>
+
+            <h2><i class="fas fa-wifi mr-2"></i>7. WiFi Gratuito</h2>
+            <p>Al utilizar nuestro WiFi gratuito, aceptas:</p>
+            <ul>
+              <li>No realizar actividades ilegales</li>
+              <li>No descargar contenido protegido por derechos de autor</li>
+              <li>No intentar acceder a sistemas protegidos</li>
+              <li>No enviar spam o malware</li>
+              <li>Respetar las políticas de uso justo del ancho de banda</li>
+            </ul>
+
+            <h2><i class="fas fa-gavel mr-2"></i>8. Propiedad Intelectual</h2>
+            <p>Todo el contenido de este sitio web, incluyendo:</p>
+            <ul>
+              <li>Textos, imágenes, logotipos y gráficos</li>
+              <li>Diseño y estructura del sitio</li>
+              <li>Nombres comerciales y marcas</li>
+              <li>Recetas y preparaciones exclusivas</li>
+            </ul>
+            <p>Están protegidos por derechos de autor y son propiedad de Café Express. No puedes reproducir, distribuir o modificar ningún contenido sin autorización escrita.</p>
+
+            <h2><i class="fas fa-shield-alt mr-2"></i>9. Limitación de Responsabilidad</h2>
+            
+            <h3>9.1 Café Express NO será responsable por:</h3>
+            <ul>
+              <li>Daños indirectos, incidentales o consecuentes</li>
+              <li>Pérdida de beneficios o datos</li>
+              <li>Interrupciones del servicio por causas fuera de nuestro control</li>
+              <li>Productos dañados durante el transporte por mensajería externa</li>
+              <li>Errores tipográficos en el sitio web</li>
+            </ul>
+
+            <h3>9.2 Uso del Sitio Web</h3>
+            <p>El uso de este sitio es bajo tu propio riesgo. Café Express no garantiza que el sitio esté libre de errores, virus o componentes dañinos.</p>
+
+            <h2><i class="fas fa-user-shield mr-2"></i>10. Privacidad de Datos</h2>
+            <p>El manejo de tu información personal se rige por nuestra <a href="privacy.html" class="has-text-primary-custom has-text-weight-semibold">Política de Privacidad</a>. Te recomendamos leerla detenidamente.</p>
+
+            <h2><i class="fas fa-exclamation-triangle mr-2"></i>11. Conducta en el Establecimiento</h2>
+            <p>Nos reservamos el derecho de negar el servicio o pedir que abandones el establecimiento si:</p>
+            <ul>
+              <li>Muestras comportamiento agresivo o irrespetuoso hacia el personal o clientes</li>
+              <li>Estás bajo influencia de alcohol o sustancias</li>
+              <li>Dañas la propiedad o mobiliario</li>
+              <li>No cumples con las normas de convivencia</li>
+              <li>Fumas en áreas no designadas</li>
+            </ul>
+
+            <h2><i class="fas fa-dog mr-2"></i>12. Política de Mascotas</h2>
+            <ul>
+              <li>Las mascotas son bienvenidas en nuestra área exterior</li>
+              <li>Deben estar atadas y bajo control en todo momento</li>
+              <li>Eres responsable de la limpieza si tu mascota ensucia</li>
+              <li>No se permiten mascotas en áreas de preparación de alimentos</li>
+            </ul>
+
+            <h2><i class="fas fa-comments mr-2"></i>13. Opiniones y Comentarios</h2>
+            <p>Al dejar comentarios, reseñas o calificaciones:</p>
+            <ul>
+              <li>Otorgas a Café Express el derecho de usar tu contenido</li>
+              <li>Tu comentario debe ser honesto y basado en experiencia real</li>
+              <li>No debe contener lenguaje ofensivo o discriminatorio</li>
+              <li>Nos reservamos el derecho de eliminar contenido inapropiado</li>
+            </ul>
+
+            <h2><i class="fas fa-edit mr-2"></i>14. Modificaciones de los Términos</h2>
+            <p>Café Express se reserva el derecho de modificar estos términos en cualquier momento. Los cambios entrarán en vigor inmediatamente después de su publicación en el sitio web.</p>
+            
+            <div class="warning-box">
+              <p>
+                <i class="fas fa-bell mr-2"></i>
+                Es tu responsabilidad revisar periódicamente estos términos. El uso continuado del servicio después de los cambios constituye tu aceptación de los nuevos términos.
+              </p>
+            </div>
+
+            <h2><i class="fas fa-balance-scale mr-2"></i>15. Ley Aplicable y Jurisdicción</h2>
+            <p>Estos términos se rigen por las leyes de México. Cualquier disputa será resuelta en los tribunales competentes de Huetamo, Michoacán.</p>
+
+            <h2><i class="fas fa-ban mr-2"></i>16. Terminación del Servicio</h2>
+            <p>Podemos suspender o terminar tu acceso a nuestros servicios si:</p>
+            <ul>
+              <li>Violas estos términos y condiciones</li>
+              <li>Proporcionas información falsa</li>
+              <li>Realizas actividades fraudulentas</li>
+              <li>Abusas del servicio de manera reiterada</li>
+            </ul>
+
+            <h2><i class="fas fa-clipboard-list mr-2"></i>17. Disposiciones Generales</h2>
+            
+            <h3>17.1 Acuerdo Completo</h3>
+            <p>Estos términos constituyen el acuerdo completo entre tú y Café Express.</p>
+
+            <h3>17.2 Divisibilidad</h3>
+            <p>Si alguna disposición se considera inválida, las demás seguirán siendo válidas y aplicables.</p>
+
+            <h3>17.3 Renuncia</h3>
+            <p>La falta de ejercicio de algún derecho no constituye una renuncia al mismo.</p>
+
+            <h2><i class="fas fa-phone-alt mr-2"></i>18. Contacto</h2>
+            <p>Si tienes preguntas sobre estos términos y condiciones, contáctanos:</p>
+            
+            <div class="box">
+              <div class="columns">
+                <div class="column">
+                  <p><strong><i class="fas fa-envelope mr-2"></i>Email:</strong><br>
+                  info@cafeexpress.com</p>
+                </div>
+                <div class="column">
+                  <p><strong><i class="fas fa-phone mr-2"></i>Teléfono:</strong><br>
+                  (443) 123-4567</p>
+                </div>
+                <div class="column">
+                  <p><strong><i class="fas fa-map-marker-alt mr-2"></i>Dirección:</strong><br>
+                  Av. Principal Madero<br>
+                  Centro de Huetamo</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="box has-background-success-light mt-5">
+              <p class="has-text-centered has-text-weight-semibold is-size-5">
+                <i class="fas fa-check-circle mr-2"></i>
+                Al utilizar nuestros servicios, confirmas que has leído, entendido y aceptado estos términos y condiciones
+              </p>
+            </div>
+
+            <div class="has-text-centered mt-5">
+              <a href="index.html" class="button is-primary is-large">
+                <span class="icon">
+                  <i class="fas fa-arrow-left"></i>
+                </span>
+                <span>Volver al Inicio</span>
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer has-background-dark has-text-white">
+    <div class="container">
+      <div class="content has-text-centered">
+        <p class="has-text-light">
+          <strong class="has-text-white">Café Express</strong> © 2024. Todos los derechos reservados.
+        </p>
+        <p class="has-text-light">
+          <a href="index.html" class="has-text-light mr-3">Inicio</a> |
+          <a href="terms.html" class="has-text-accent mx-3">Términos y Condiciones</a> |
+          <a href="privacy.html" class="has-text-accent ml-3">Políticas de Privacidad</a>
+        </p>
+        <p class="content has-text-light mt-4">
+          Instituto Tecnológico de Huetamo <br>
+          Hecho por: <i class="fas fa-heart has-text-danger"></i> Marjorie Mondragón Domínguez 
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript para el menú móvil -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+      
+      $navbarBurgers.forEach( el => {
+        el.addEventListener('click', () => {
+          const target = el.dataset.target;
+          const $target = document.getElementById(target);
+          el.classList.toggle('is-active');
+          $target.classList.toggle('is-active');
+        });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Configuración básica del documento -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Café Express - cafetería</title>
+  <script
+  src="https://js.sentry-cdn.com/b145107a78f4686f5def7390f56af1f0.min.js"
+  crossorigin="anonymous"
+></script>
+  <!-- Estilos de Bulma CSS (Framework CSS) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+  <!-- Iconos de Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Fuentes de Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Estilos personalizados -->
+  <style>
+    /*VARIABLES DE COLORES */
+    :root {
+      --primary-brown: #6B4423;      /* Café principal */
+      --secondary-brown: #8B6F47;    /* Café secundario */
+      --accent-gold: #D4AF37;        /* Dorado para acentos */
+      --cream: #F5E6D3;              /* Color crema */
+      --dark: #2C1810;               /* Café oscuro */
+    }
+    
+    /*+CONFIGURACIÓN GENERAL*/
+    body {
+      font-family: 'Montserrat', sans-serif; /* Fuente principal */
+      color: #333;
+    }
+    
+    /* Títulos con fuente elegante */
+    .title, .navbar-item strong {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    /* BARRA DE NAVEGACIÓN */
+    .navbar {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--primary-brown) 100%);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    
+    /* Items del menú */
+    .navbar-item, .navbar-link {
+      color: var(--cream) !important;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    
+    /* Efecto hover en el menú */
+    .navbar-item:hover, .navbar-link:hover {
+      background-color: rgba(212, 175, 55, 0.2) !important;
+      color: var(--accent-gold) !important;
+    }
+    
+    /* Menú hamburguesa en móviles */
+    .navbar-burger span {
+      background-color: var(--cream);
+    }
+    
+    /* BOTONES  */
+    /* Botón primario con gradiente dorado */
+    .button.is-primary {
+      background: linear-gradient(135deg, var(--accent-gold) 0%, #C19A2E 100%);
+      border: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    }
+    
+    /* Efecto hover del botón primario */
+    .button.is-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+    }
+    
+    /* Botón claro */
+    .button.is-light {
+      background-color: var(--cream);
+      color: var(--primary-brown);
+      font-weight: 600;
+    }
+    
+    /*  SECCIÓN HERO (ENCABEZADO GRANDE) */
+    .hero.is-primary {
+      background: linear-gradient(135deg, rgba(44, 24, 16, 0.95) 0%, rgba(107, 68, 35, 0.9) 100%),
+                  url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1600') center/cover;
+      position: relative;
+    }
+    
+    /* Overlay oscuro sobre la imagen de fondo */
+    .hero.is-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.3) 100%);
+    }
+    
+    /* Contenido del hero por encima del overlay */
+    .hero-body {
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Título principal del hero */
+    .hero .title {
+      font-size: 4rem;
+      font-weight: 900;
+      color: #FFF8E7;
+      text-shadow: 3px 3px 8px rgba(0,0,0,0.7), 0 0 30px rgba(212, 175, 55, 0.4);
+      letter-spacing: 2px;
+    }
+    
+    /* Subtítulo del hero */
+    .hero .subtitle {
+      font-weight: 300;
+      color: #F5E6D3;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.7), 0 0 20px rgba(212, 175, 55, 0.3);
+      letter-spacing: 1px;
+    }
+    
+    /* TARJETAS DE PRODUCTOS  */
+    .card {
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+      transition: all 0.4s ease;
+      border: 1px solid rgba(212, 175, 55, 0.1);
+    }
+    
+    /* Efecto hover en tarjetas */
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(212, 175, 55, 0.25);
+    }
+    
+    /* Títulos dentro de tarjetas */
+    .card-content .title {
+      color: var(--primary-brown);
+      font-size: 1.5rem;
+    }
+    
+    /* Precios en tarjetas */
+    .card-content .subtitle {
+      color: var(--accent-gold);
+      font-weight: 700;
+      font-size: 1.3rem;
+    }
+    
+    /*  SECCIONES  */
+    .section {
+      padding: 4rem 1.5rem;
+    }
+    
+    /* Títulos de sección con línea decorativa */
+    .section > .container > .title {
+      font-size: 3rem;
+      color: var(--primary-brown);
+      margin-bottom: 3rem;
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    /* Línea decorativa bajo títulos */
+    .section > .container > .title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent-gold), var(--secondary-brown));
+      border-radius: 2px;
+    }
+    
+    /* FONDO CLARO */
+    .has-background-light {
+      background: linear-gradient(135deg, var(--cream) 0%, #FFF8E7 100%);
+    }
+    
+    /* ICONOS CIRCULARES */
+    .icon-wrapper {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, var(--cream) 0%, white 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    /* COLORES PERSONALIZADOS */
+    .has-text-primary-custom {
+      color: var(--primary-brown) !important;
+    }
+    
+    .has-text-accent {
+      color: var(--accent-gold) !important;
+    }
+    
+    /*  FORMULARIOS  */
+    .input, .textarea {
+      border: 2px solid var(--cream);
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+    
+    /* Efecto focus en inputs */
+    .input:focus, .textarea:focus {
+      border-color: var(--accent-gold);
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+    }
+    
+    /*FOOTER*/
+    .footer {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--primary-brown) 100%);
+    }
+    
+    .footer .title {
+      color: var(--accent-gold) !important;
+    }
+    
+    /* ICONOS DE INFORMACIÓN  */
+    .media-left i {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--cream) 0%, white 100%);
+      border-radius: 50%;
+      color: var(--primary-brown);
+    }
+    
+    /* RESPONSIVE - MÓVILES */
+    @media screen and (max-width: 768px) {
+      .hero .title {
+        font-size: 2.5rem;
+      }
+    }
+    #cookieBanner {
+      position: fixed;
+      bottom: -500px;
+      left: 0;
+      right: 0;
+      background: linear-gradient(135deg, var(--dark) 0%, var(--primary-brown) 100%);
+      color: var(--cream);
+      padding: 1.5rem 2rem;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+      z-index: 9999;
+      transition: bottom 0.4s ease-in-out;
+      border-top: 3px solid var(--accent-gold);
+  }
+
+  #cookieBanner.show {
+      bottom: 0;
+  }
+
+  .cookie-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+  }
+
+  .cookie-text {
+      flex: 1;
+      min-width: 300px;
+  }
+
+  .cookie-text h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--accent-gold);
+      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+  }
+
+  .cookie-text p {
+      margin: 0;
+      line-height: 1.6;
+      color: var(--cream);
+  }
+
+  .cookie-text a {
+      color: var(--accent-gold);
+      text-decoration: underline;
+      transition: color 0.3s ease;
+  }
+
+  .cookie-text a:hover {
+      color: #FFF8E7;
+  }
+
+  .cookie-buttons {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+  }
+
+  .cookie-btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+      font-family: 'Montserrat', sans-serif;
+  }
+
+  .cookie-btn-accept {
+      background: linear-gradient(135deg, var(--accent-gold) 0%, #C19A2E 100%);
+      color: var(--dark);
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+  }
+
+  .cookie-btn-accept:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+  }
+
+  .cookie-btn-reject {
+      background: transparent;
+      color: var(--cream);
+      border: 2px solid var(--cream);
+  }
+
+  .cookie-btn-reject:hover {
+      background: rgba(245, 230, 211, 0.1);
+      border-color: var(--accent-gold);
+      color: var(--accent-gold);
+  }
+
+  /* Responsive para móviles */
+  @media screen and (max-width: 768px) {
+      #cookieBanner {
+          padding: 1rem;
+      }
+      
+      .cookie-content {
+          flex-direction: column;
+          text-align: center;
+      }
+      
+      .cookie-buttons {
+          width: 100%;
+          flex-direction: column;
+      }
+      
+      .cookie-btn {
+          width: 100%;
+      }
+  }
+
+  /* Icono de cookie animado */
+  .cookie-icon {
+      display: inline-block;
+      animation: cookieRotate 2s infinite ease-in-out;
+  }
+
+  @keyframes cookieRotate {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-10deg); }
+      75% { transform: rotate(10deg); }
+  }
+  </style>
+</head>
+
+<body>
+  <!-- BARRA DE NAVEGACIÓN -->
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <!-- Logo y nombre del negocio -->
+    <div class="navbar-brand">
+      <a class="navbar-item" href="#">
+        <i class="fas fa-coffee has-text-accent"></i>
+        <strong class="ml-2">Café Express</strong>
+      </a>
+      
+      <!-- Menú para móviles -->
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    
+    <!-- Menú de navegación -->
+    <div id="navbarBasicExample" class="navbar-menu">
+      <!-- Links del lado izquierdo -->
+      <div class="navbar-start">
+        <!-- Link a inicio con scroll al tope -->
+        <a class="navbar-item" href="#" onclick="scrollToTop(); return false;">
+          Inicio
+        </a>
+        <!-- Link que abre el modal del menú -->
+        <a class="navbar-item" href="#" onclick="document.querySelector('.hero .button').click(); return false;">
+          Menú
+        </a>
+        
+        <!-- Dropdown "Más" con submenú -->
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            Más
+          </a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#" onclick="scrollToSection('.section'); return false;">
+              Nosotros
+            </a>
+            <a class="navbar-item" href="#" onclick="scrollToSection('.section'); return false;">
+              Eventos
+            </a>
+            <a class="navbar-item" href="#" onclick="scrollToSection('form'); return false;">
+              Contacto
+            </a>
+            <hr class="navbar-divider">
+            <a class="navbar-item" href="#" onclick="scrollToSection('form'); return false;">
+              Ubicación
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Botones del lado derecho -->
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <!-- Botón para abrir modal de reservaciones -->
+            <a class="button is-primary">
+              <strong>Reservar Mesa</strong>
+            </a>
+            <!-- Botón para abrir modal de pedidos -->
+            <a class="button is-light">
+              Pedidos Online
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- SECCIÓN HERO (ENCABEZADO PRINCIPAL)-->
+  <section class="hero is-primary is-medium">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <!-- Título principal con icono -->
+        <h1 class="title is-1">
+          <i class="fas fa-coffee mr-3"></i>
+          Café Express
+        </h1>
+        <!-- Subtítulo descriptivo -->
+        <h2 class="subtitle is-3">
+          El mejor café artesanal de la ciudad
+        </h2>
+        <!-- Botón para ver el menú -->
+        <a class="button is-white is-large mt-4">
+          <span class="icon">
+            <i class="fas fa-eye"></i>
+          </span>
+          <span>Ver Menú</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN: NUESTROS FAVORITOS-->
+  <section class="section">
+    <div class="container">
+      <!-- Título de la sección -->
+      <h2 class="title is-2 has-text-centered mb-6">Nuestros Favoritos</h2>
+      
+      <!-- Grid de productos (3 columnas) -->
+      <div class="columns is-multiline">
+        
+        <!-- PRODUCTO 1: Café Americano -->
+        <div class="column is-4">
+          <div class="card">
+            <!-- Imagen del producto -->
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <img src="./img/Americano.jpg" class="d-block w-100" alt="Café Americano">
+              </figure>
+            </div>
+            <!-- Contenido de la tarjeta -->
+            <div class="card-content">
+              <div class="media">
+                <div class="media-left">
+                  <!-- Icono del producto -->
+                  <figure class="image is-48x48">
+                    <i class="fas fa-coffee fa-2x has-text-primary-custom"></i>
+                  </figure>
+                </div>
+                <div class="media-content">
+                  <!-- Nombre del producto -->
+                  <p class="title is-4">Café Americano</p>
+                  <!-- Precio -->
+                  <p class="subtitle is-6">$45.00</p>
+                </div>
+              </div>
+              <!-- Descripción del producto -->
+              <div class="content">
+                Nuestro clásico café americano preparado con granos seleccionados de las mejores plantaciones.
+                <time datetime="2024-01-01">Disponible todo el día</time>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== PRODUCTO 2: Café Espresso ===== -->
+        <div class="column is-4">
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <img src="./img/espresso.jpg" class="d-block w-100" alt="Espresso">
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="media">
+                <div class="media-left">
+                  <figure class="image is-48x48">
+                    <i class="fas fa-heart fa-2x" style="color: #C19A2E;"></i>
+                  </figure>
+                </div>
+                <div class="media-content">
+                  <p class="title is-4">Café Espresso</p>
+                  <p class="subtitle is-6">$65.00</p>
+                </div>
+              </div>
+              <div class="content">
+                Delicioso café espresso, preparado por nuestros baristas expertos. 
+                <time datetime="2024-01-01">Especialidad de la casa</time>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--PRODUCTO 3: Pastel de Chocolate -->
+        <div class="column is-4">
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <img src="./img/pastel.jpg" class="d-block w-100" alt="pastel">
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="media">
+                <div class="media-left">
+                  <figure class="image is-48x48">
+                    <i class="fas fa-birthday-cake fa-2x has-text-accent"></i>
+                  </figure>
+                </div>
+                <div class="media-content">
+                  <p class="title is-4">Pastel de Chocolate</p>
+                  <p class="subtitle is-6">$85.00</p>
+                </div>
+              </div>
+              <div class="content">
+                Delicioso pastel de chocolate casero, perfecto para acompañar tu café favorito.
+                <time datetime="2024-01-01">Hecho diariamente</time>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--SECCIÓN: ¿POR QUÉ ELEGIRNOS? -->
+  <section class="section has-background-light">
+    <div class="container">
+      <!-- Título de la sección -->
+      <h2 class="title is-2 has-text-centered has-text-black mb-6">¿Por qué elegir Café Express?</h2>
+      
+      <!-- Grid de características (3 columnas) -->
+      <div class="columns is-multiline">
+        
+        <!--CARACTERÍSTICA 1: 100% Orgánico-->
+        <div class="column is-4">
+          <div class="has-text-centered">
+            <!-- Icono en círculo -->
+            <div class="icon-wrapper mb-4">
+              <i class="fas fa-leaf fa-3x has-text-primary-custom"></i>
+            </div>
+            <!-- Título de la característica -->
+            <h3 class="title is-4 has-text-black">100% Orgánico</h3>
+            <!-- Descripción -->
+            <p class="content has-text-black">
+              Todos nuestros granos son orgánicos y de comercio justo, apoyando a los productores locales.
+            </p>
+          </div>
+        </div>
+
+        <!--CARACTERÍSTICA 2: Servicio Rápido-->
+        <div class="column is-4">
+          <div class="has-text-centered">
+            <div class="icon-wrapper mb-4">
+              <i class="fas fa-clock fa-3x has-text-accent"></i>
+            </div>
+            <h3 class="title is-4 has-text-black">Servicio rápido</h3>
+            <p class="content has-text-black">
+              Preparamos tu orden en menos de 5 minutos sin sacrificar la calidad.
+            </p>
+          </div>
+        </div>
+
+        <!-- CARACTERÍSTICA 3: WiFi Gratuito -->
+        <div class="column is-4">
+          <div class="has-text-centered">
+            <div class="icon-wrapper mb-4">
+              <i class="fas fa-wifi fa-3x has-text-primary-custom"></i>
+            </div>
+            <h3 class="title is-4 has-text-black">WiFi gratuito</h3>
+            <p class="content has-text-black">
+              Disfruta de nuestro ambiente acogedor con conexión WiFi de alta velocidad.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN: CONTÁCTANOS -->
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        
+        <!-- ===== COLUMNA IZQUIERDA: Formulario de Contacto ===== -->
+        <div class="column is-6">
+          <h2 class="title is-3 has-text-primary-custom">Contáctanos</h2>
+          <p class="content">
+            ¿Tienes alguna pregunta o comentario? 
+          </p>
+          
+          <!-- Formulario de contacto -->
+          <form>
+            <!-- Campo: Nombre -->
+            <div class="field">
+              <label class="label">Nombre</label>
+              <div class="control has-icons-left">
+                <input class="input" type="text" name="nombre" placeholder="Tu nombre completo" 
+                       pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+" title="Solo se permiten letras" required>
+                <span class="icon is-small is-left">
+                  <i class="fas fa-user"></i>
+                </span>
+              </div>
+            </div>
+
+            <!-- Campo: Email -->
+            <div class="field">
+              <label class="label">Email</label>
+              <div class="control has-icons-left">
+                <input class="input" type="email" name="email" placeholder="tu@email.com" required>
+                <span class="icon is-small is-left">
+                  <i class="fas fa-envelope"></i>
+                </span>
+              </div>
+            </div>
+
+            <!-- Campo: Mensaje -->
+            <div class="field">
+              <label class="label">Mensaje</label>
+              <div class="control">
+                <textarea class="textarea" name="mensaje" placeholder="Escribe tu mensaje aquí..." 
+                          minlength="10" required></textarea>
+              </div>
+            </div>
+
+            <!-- Botón de envío -->
+            <div class="field">
+              <div class="control">
+                <button type="submit" class="button is-primary">
+                  <span class="icon">
+                    <i class="fas fa-paper-plane"></i>
+                  </span>
+                  <span>Enviar Mensaje</span>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- COLUMNA DERECHA: Información de Contacto  -->
+        <div class="column is-6">
+          <h2 class="title is-3 has-text-primary-custom">Información</h2>
+          
+          <div class="content">
+            <!-- Dirección -->
+            <div class="media">
+              <div class="media-left">
+                <i class="fas fa-map-marker-alt fa-2x"></i>
+              </div>
+              <div class="media-content">
+                <h4 class="title is-5 has-text-primary-custom">Dirección</h4>
+                <p>Av. Principal Madero<br>
+                Centro de heutamo</p>
+              </div>
+            </div>
+
+            <!-- Teléfono -->
+            <div class="media mt-4">
+              <div class="media-left">
+                <i class="fas fa-phone fa-2x"></i>
+              </div>
+              <div class="media-content">
+                <h4 class="title is-5 has-text-primary-custom">Teléfono</h4>
+                <p>(443) 123-4567</p>
+              </div>
+            </div>
+
+            <!-- Horarios -->
+            <div class="media mt-4">
+              <div class="media-left">
+                <i class="fas fa-clock fa-2x"></i>
+              </div>
+              <div class="media-content">
+                <h4 class="title is-5 has-text-primary-custom">Horarios</h4>
+                <p>Lunes a Viernes: 7:00 AM - 9:00 PM<br>
+                Sábados y Domingos: 8:00 AM - 10:00 PM</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- FOOTER (PIE DE PÁGINA) -->
+  <footer class="footer has-background-dark has-text-white">
+    <div class="container">
+      <div class="columns">
+        
+        <!-- ===== COLUMNA 1: Información del Negocio ===== -->
+        <div class="column is-4">
+          <h4 class="title is-4 has-text-white">
+            <i class="fas fa-coffee mr-2"></i>
+            Café Express
+          </h4>
+          <p class="content has-text-light">
+            La mejor cafetería de la ciudad
+          </p>
+          <!-- Botones de redes sociales -->
+          <div class="buttons">
+            <a class="button is-light is-small">
+              <span class="icon">
+                <i class="fab fa-facebook"></i>
+              </span>
+            </a>
+            <a class="button is-light is-small">
+              <span class="icon">
+                <i class="fab fa-instagram"></i>
+              </span>
+            </a>
+            <a class="button is-light is-small">
+              <span class="icon">
+                <i class="fab fa-twitter"></i>
+              </span>
+            </a>
+          </div>
+        </div>
+
+        <!-- COLUMNA 2: Enlaces Rápidos -->
+        <div class="column is-4">
+          <h4 class="title is-5 has-text-white">Enlaces Rápidos</h4>
+          <div class="content has-text-light">
+            <p><a href="index.html" class="has-text-light">Inicio</a></p>
+            <p><a href="#" class="has-text-light">Menú Completo</a></p>
+            <p><a href="#" class="has-text-light">Reservaciones</a></p>
+            <hr style="background-color: var(--accent-gold); margin: 0.5rem 0;">
+            <p><a href="terms.html" class="has-text-accent"><i class="fas fa-file-contract mr-1"></i>Términos y Condiciones</a></p>
+            <p><a href="privacy.html" class="has-text-accent"><i class="fas fa-shield-alt mr-1"></i>Políticas de Privacidad</a></p>
+          </div>
+        </div>
+
+        <!-- COLUMNA 3: Newsletter-->
+        <div class="column is-4">
+          <h4 class="title is-5 has-text-white">Suscribirse</h4>
+          <p class="content has-text-light">
+            Recibe ofertas especiales y noticias sobre nuevos productos.
+          </p>
+          <!-- Formulario de suscripción -->
+          <div class="field has-addons">
+            <div class="control is-expanded">
+              <input class="input" type="email" placeholder="Tu email">
+            </div>
+            <div class="control">
+              <button class="button is-primary">
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Separador -->
+      <hr class="has-background-grey-lighter">
+      
+      <!-- Créditos -->
+      <div class="has-text-centered">
+        <p class="content has-text-light">
+          Instituto Tecnológico de Huetamo <br>
+
+        </p>
+      </div>
+    </div>
+  </footer>
+    
+    <!-- BANNER DE COOKIES -->
+    <div id="cookieBanner">
+      <div class="cookie-content">
+        <div class="cookie-text">
+          <h3>
+            <i class="fas fa-cookie-bite cookie-icon"></i>
+            Usamos Cookies
+          </h3>
+          <p>
+            Utilizamos cookies para mejorar tu experiencia en nuestro sitio. 
+            Al continuar navegando, aceptas nuestro uso de cookies. 
+            <a href="privacy.html">Más información</a>
+          </p>
+        </div>
+        <div class="cookie-buttons">
+          <button id="acceptCookies" class="cookie-btn cookie-btn-accept">
+            <i class="fas fa-check mr-2"></i>
+            Aceptar Cookies
+          </button>
+          <button id="rejectCookies" class="cookie-btn cookie-btn-reject">
+            <i class="fas fa-times mr-2"></i>
+            Rechazar
+          </button>
+        </div>
+      </div>
+    </div>
+
+  <!-- JavaScript de Cookies -->
+  <script src="cookies.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

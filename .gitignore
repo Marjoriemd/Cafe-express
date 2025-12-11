@@ -1,0 +1,14 @@
+# Archivo de configuración con contraseñas
+config.php
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos temporales
+*.tmp
+*.log
+
+# Carpetas de IDEs
+.vscode/
+.idea/
